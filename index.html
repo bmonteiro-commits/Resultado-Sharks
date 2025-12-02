@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Resultados Sharks</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+    <style>
+      body { font-family: 'Inter', sans-serif; }
+      
+      /* CLASSE PARA O FUNDO - GRADIENTE ESPELHADO (MIRRORED) */
+      .bg-sharks-theme {
+        background-color: #020617; /* Slate 950 Base */
+        /* Efeito Espelhado: Escuro no topo e base, luz no centro (Horizonte) */
+        background-image: linear-gradient(180deg, #020617 0%, #1e293b 45%, #1e293b 55%, #020617 100%);
+        background-attachment: fixed;
+        min-height: 100vh;
+      }
+
+      /* Estilos exclusivos para exportação PDF/Impressão */
+      @media print {
+        @page {
+          margin: 0.5cm;
+          size: landscape;
+        }
+        
+        body {
+          background: white !important;
+          color: black !important;
+          -webkit-print-color-adjust: exact !important;
+          print-color-adjust: exact !important;
+        }
+
+        .bg-sharks-theme {
+           background-image: none !important;
+           background-color: white !important;
+        }
+
+        /* Ocultar elementos de navegação e interativos */
+        aside, 
+        button, 
+        .no-print,
+        input[type="text"],
+        input[type="date"],
+        input[type="number"],
+        select {
+          display: none !important;
+        }
+
+        /* Ajustar layout principal */
+        main {
+          margin: 0 !important;
+          padding: 0 !important;
+          height: auto !important;
+          overflow: visible !important;
+          width: 100% !important;
+          background: white !important;
+        }
+
+        /* Garantir que gráficos apareçam */
+        .recharts-responsive-container {
+          width: 100% !important;
+          height: 300px !important;
+        }
+
+        /* Forçar exibição do cabeçalho de relatório */
+        .print-only {
+          display: block !important;
+        }
+        
+        /* Remover sombras e bordas desnecessárias */
+        .shadow-lg, .shadow-xl, .shadow-sm, .backdrop-blur-md, .backdrop-blur, .backdrop-blur-xl {
+          box-shadow: none !important;
+          border: 1px solid #e2e8f0 !important;
+          background: white !important;
+          backdrop-filter: none !important;
+        }
+
+        /* Ajustes de tipografia para papel */
+        h1, h2, h3, p, span, td, th {
+          color: #000 !important;
+          text-shadow: none !important;
+        }
+        
+        /* Remover efeitos de vidro na impressão */
+        .bg-slate-900\/60, .bg-slate-900\/80, .bg-white\/95 {
+           background-color: white !important;
+           opacity: 1 !important;
+           color: black !important;
+        }
+
+        /* Tabela para impressão */
+        table {
+          width: 100% !important;
+          border-collapse: collapse !important;
+        }
+        th, td {
+          border: 1px solid #ddd !important;
+          color: black !important;
+        }
+      }
+
+      .print-only {
+        display: none;
+      }
+      
+      /* Scrollbar personalizada para o tema escuro */
+      ::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: rgba(15, 23, 42, 0.5); 
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #0ea5e9; 
+        border-radius: 4px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #0284c7; 
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.30.0",
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "lucide-react": "https://aistudiocdn.com/lucide-react@^0.555.0",
+    "recharts": "https://aistudiocdn.com/recharts@^3.5.1"
+  }
+}
+</script>
+</head>
+  <body class="bg-sharks-theme text-slate-100 antialiased h-screen overflow-hidden selection:bg-cyan-500 selection:text-white">
+    <div id="root" class="h-full"></div>
+  </body>
+</html>
